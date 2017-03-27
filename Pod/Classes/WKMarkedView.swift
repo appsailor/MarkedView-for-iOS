@@ -8,6 +8,13 @@
 import UIKit
 import WebKit
 
+protocol WKMarkedWKWebViewDelegate {
+    
+    func markedWKWebViewDidStartLoading(_ webView:WKWebView)
+    func markedWKWebViewDidFinishLoading(_ webView:WKWebView)
+    func markedWKWebView(_ webView: WKWebView, didFailLoadWithError error: Error)
+}
+
 open class WKMarkedView: UIView {
     
     fileprivate var webView: WKWebView!

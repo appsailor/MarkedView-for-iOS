@@ -7,12 +7,22 @@
 
 import UIKit
 
+protocol UIMarkedWebViewDelegate {
+    
+    func markedWebViewDidStartLoading(_ webView:UIWebView)
+    func markedWebViewDidFinishLoading(_ webView:UIWebView)
+    func markedWebView(_ webView: UIWebView, didFailLoadWithError error: Error)
+}
+
 open class UIMarkedView: UIView {
 
     @IBOutlet weak var uiMarkedView: UIWebView!
-        
+    
+    var delegate:UIMarkedWebViewDelegate?
+    
     fileprivate var mdContents: String?
     fileprivate var codeScrollDisable = false
+    
     
     convenience init () {
         self.init(frame:CGRect.zero)
@@ -105,8 +115,12 @@ open class UIMarkedView: UIView {
 // MARK: - <#UIWebViewDelegate#>
 extension UIMarkedView: UIWebViewDelegate {
     
+    public func webViewDidStartLoad(_ webView: UIWebView) {
+        delegate?.markedWebViewDidStartLoading(webView)
+    }
+    
     public func webViewDidFinishLoad(_ webView: UIWebView) {
-        
+        delegate?.markedWebViewDidFinishLoading(webView)
         guard let contents = mdContents, let mdView = uiMarkedView else {
             return;
         }
@@ -115,4 +129,7 @@ extension UIMarkedView: UIWebViewDelegate {
         mdView.stringByEvaluatingJavaScript(from: script)
     }
     
+    public func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        delegate?.markedWebView(webView, didFailLoadWithError: error)
+    }
 }

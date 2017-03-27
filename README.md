@@ -20,11 +20,11 @@ select the best one from UIWebview or WKWebview.
 
 * UIMarkedView
     * UIWebView base
-
+* UIMarkedWebViewDelegate
 
 * WKMarkedView
     * WKWebView base
-
+* WKMarkedWebViewDelegate
 
 ## Usage
 
@@ -37,6 +37,11 @@ It is a simple module, which enable you to convert any files into initialized vi
 import MarkedView
 
 ・・・
+
+//UIWebView base
+let mdWebView = WKMarkedView()
+//set a delegate
+mdView.delegate = self
 
 // WKWebView base
 let mdView = WKMarkedView()
