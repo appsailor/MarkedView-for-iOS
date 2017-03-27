@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-protocol WKMarkedWKWebViewDelegate {
+public protocol WKMarkedWKWebViewDelegate : NSObjectProtocol {
     
     func markedWKWebViewDidStartLoading(_ webView:WKWebView)
     func markedWKWebViewDidFinishLoading(_ webView:WKWebView)

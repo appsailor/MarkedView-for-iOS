@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol UIMarkedWebViewDelegate {
+public protocol UIMarkedWebViewDelegate : NSObjectProtocol {
     
     func markedWebViewDidStartLoading(_ webView:UIWebView)
     func markedWebViewDidFinishLoading(_ webView:UIWebView)
@@ -18,7 +18,7 @@ open class UIMarkedView: UIView {
 
     @IBOutlet weak var uiMarkedView: UIWebView!
     
-    var delegate:UIMarkedWebViewDelegate?
+    public var delegate:UIMarkedWebViewDelegate?
     
     fileprivate var mdContents: String?
     fileprivate var codeScrollDisable = false
