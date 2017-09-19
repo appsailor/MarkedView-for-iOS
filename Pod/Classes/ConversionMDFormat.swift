@@ -31,7 +31,7 @@ internal class ConversionMDFormat {
         
         var newMdText = mdText
         for result in results! {
-            let range = result.rangeAt(result.numberOfRanges - 1)
+            let range = result.range(at: result.numberOfRanges - 1)
             let imgPath = mdText.substringWithRange(range)
             
             if !imgPath.pathExtensionCheck || imgPath.urlPatternCheck {
